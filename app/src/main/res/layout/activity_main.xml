@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="15dp"
     tools:context=".MainActivity">
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:src="@drawable/logooo"
+        android:src="@drawable/logo"
         android:layout_marginTop="30dp"
         android:scaleType="fitCenter">
 
@@ -68,12 +68,14 @@
                 android:padding="10dp"
                 app:strokeColor="@color/colorPrimary"
                 app:strokeWidth="2dp"
+                app:cornerRadius="10dp"
                 android:backgroundTint="@color/background"
                 android:text="S i g n   U p                                                                                       N o w"
                 android:textAlignment="center"
                 android:textColor="#59B9F0"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="signUpNowButton"/>
 
         </LinearLayout>
 
@@ -98,12 +100,14 @@
                 android:id="@+id/main_join_now_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:onClick="signInNowBtn"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 app:strokeColor="@color/colorPrimary"
                 app:strokeWidth="2dp"
+                app:cornerRadius="10dp"
                 android:drawableTop="@drawable/ic_studentt"
                 android:fontFamily="@font/maven_pro_medium"
                 android:padding="10dp"
