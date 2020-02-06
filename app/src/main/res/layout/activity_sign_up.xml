@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:textColor="#050505"
+                android:textStyle="bold"
                 android:inputType="text"
                 android:textSize="13sp"/>
 
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:textColor="#050505"
+                android:textStyle="bold"
                 android:inputType="text"
                 android:textSize="13sp"/>
 
@@ -80,14 +80,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:textColor="#050505"
-                android:password="true"
-                android:inputType="text"
+                android:textStyle="bold"
+                android:inputType="textPassword"
                 android:textSize="13sp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
         <TextView
@@ -95,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="alreadyHaveAnAccountBtn"
-            android:text="Already Hava An account ?"
+            android:text="Already Have An Account ?"
             android:textAlignment="textEnd"
             android:textSize="15sp"
             />
@@ -122,12 +119,13 @@
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:text="s i g n    u p"
+            android:text="c o n t i n u e   r e g i s t r a t i o n"
+            android:onClick="continueRegdBtn"
             app:strokeWidth="2dp"
             app:cornerRadius="10dp"
             android:textAlignment="center"
             android:fontFamily="@font/maven_pro_medium"
-            android:textSize="14sp"
+            android:textSize="11sp"
             app:strokeColor="@color/colorPrimary"/>
 
 

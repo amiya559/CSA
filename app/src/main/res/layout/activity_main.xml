@@ -23,7 +23,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome To The Official App of CSA"
+        android:text="Welcome to The Official App of \nCSA"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/abhaya_libre_extrabold"
         android:textAlignment="center"
@@ -35,7 +35,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="45dp"
         android:layout_weight="3"
         android:weightSum="2">
 
@@ -73,7 +73,7 @@
                 android:text="S i g n   U p                                                                                       N o w"
                 android:textAlignment="center"
                 android:textColor="#59B9F0"
-                android:textSize="13sp"
+                android:textSize="11sp"
                 android:textStyle="bold"
                 android:onClick="signUpNowButton"/>
 
@@ -115,7 +115,7 @@
                 android:text="S i g n   i n                                                                                       N o w"
                 android:textAlignment="center"
                 android:textColor="#59B9F0"
-                android:textSize="13sp"
+                android:textSize="11sp"
                 android:textStyle="bold"/>
 
 
