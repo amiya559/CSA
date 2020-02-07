@@ -9,15 +9,12 @@
     android:padding="15dp"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:src="@drawable/logo"
         android:layout_marginTop="30dp"
-        android:scaleType="fitCenter">
-
-    </ImageView>
+        android:scaleType="fitCenter" />
 
     <TextView
         android:gravity="center"
@@ -34,10 +31,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:layout_weight="3"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:id="@+id/main_layout_select_setup"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -70,7 +68,7 @@
                 app:strokeWidth="2dp"
                 app:cornerRadius="10dp"
                 android:backgroundTint="@color/background"
-                android:text="S i g n   U p                                                                                       N o w"
+                android:text="S i g n   U p\nN o w"
                 android:textAlignment="center"
                 android:textColor="#59B9F0"
                 android:textSize="11sp"
@@ -95,7 +93,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/main_join_now_btn"
                 android:layout_width="match_parent"
@@ -112,18 +109,42 @@
                 android:fontFamily="@font/maven_pro_medium"
                 android:padding="10dp"
                 android:backgroundTint="@color/background"
-                android:text="S i g n   i n                                                                                       N o w"
+                android:text="S i g n   i n\nN o w"
                 android:textAlignment="center"
                 android:textColor="#59B9F0"
                 android:textSize="11sp"
                 android:textStyle="bold"/>
 
-
         </LinearLayout>
-
-
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp"
+        android:id="@+id/main_layout_loader">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/SpinKitView.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorPrimary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="L o a d i n g . . ."
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:fontFamily="@font/abhaya_libre_extrabol"
+            android:id="@+id/main_text_loader"/>
+
+    </LinearLayout>
 
 </LinearLayout>

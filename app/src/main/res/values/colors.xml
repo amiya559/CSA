@@ -3,9 +3,5 @@
     <color name="colorPrimary">#59B9F0</color>
     <color name="colorPrimaryDark">#59B9F0</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#59B9F0</color>
-
     <color name="background">#fff</color>
-
-
-
 </resources>

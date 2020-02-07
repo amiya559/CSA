@@ -19,9 +19,7 @@
             android:layout_height="75dp"
             android:layout_marginTop="30dp"
             android:src="@drawable/logo"
-            android:scaleType="fitCenter"
-            android:id="@+id/login_applogo"
-            ></ImageView>
+            android:scaleType="fitCenter"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -39,8 +37,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:textStyle="bold"
-                android:inputType="text"
-                android:textSize="13sp"/>
+                android:inputType="textEmailAddress"
+                android:textSize="13sp"
+                android:id="@+id/sign_in_edit_email"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,21 +60,18 @@
                 android:ems="10"
                 android:textStyle="bold"
                 android:inputType="textPassword"
-                android:textSize="13sp"/>
+                android:textSize="13sp"
+                android:id="@+id/sign_in_edit_password"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
-            android:id="@+id/linear_layout_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/login_password_input"
-            android:layout_marginTop="5dp"
-            >
+            android:layout_marginTop="5dp">
 
             <TextView
-                android:id="@+id/remember_me_chkb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -84,28 +80,22 @@
                 android:textStyle="bold"
                 android:textSize="15sp"/>
 
-
             <TextView
-                android:id="@+id/forget_password_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Forgot Password?"
                 android:layout_marginTop="15dp"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:textAlignment="textEnd"
-                />
+                android:textAlignment="textEnd"/>
 
         </LinearLayout>
-
-
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/material_text_button"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -117,10 +107,38 @@
             android:textAlignment="center"
             android:fontFamily="@font/maven_pro_medium"
             android:textSize="12sp"
-            app:strokeColor="@color/colorPrimary"/>
+            app:strokeColor="@color/colorPrimary"
+            android:onClick="signInButton"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp"
+            android:id="@+id/sign_in_layout_loader"
+            android:visibility="invisible">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/SpinKitView.Circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="L o a d i n g . . ."
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:fontFamily="@font/abhaya_libre_extrabol"
+                android:id="@+id/sign_in_text_loader"/>
 
         </LinearLayout>
 
+    </LinearLayout>
 
 </ScrollView>
