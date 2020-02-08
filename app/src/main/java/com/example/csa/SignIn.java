@@ -75,19 +75,19 @@ public class SignIn extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
-                        layoutLoader.setVisibility(View.INVISIBLE);
-                        Toast.makeText(SignIn.this,"Failed to log in",Toast.LENGTH_SHORT).show();
+                        layoutLoader.setVisibility(View.GONE);
+                        Toast.makeText(SignIn.this,"Unable to log in/Password may changed",Toast.LENGTH_SHORT).show();
                     } else {
 
                         // Check for email verification
                         if (firebaseAuth.getCurrentUser().isEmailVerified()) {
-                            layoutLoader.setVisibility(View.INVISIBLE);
+                            layoutLoader.setVisibility(View.GONE);
                             Toast.makeText(SignIn.this,"Log in successful",Toast.LENGTH_SHORT).show();
                             Intent homePageIntent = new Intent(SignIn.this,HomePage.class);
                             homePageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(homePageIntent);
                         } else {
-                            layoutLoader.setVisibility(View.INVISIBLE);
+                            layoutLoader.setVisibility(View.GONE);
                             Toast.makeText(SignIn.this,"Email verification incomplete",Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -102,5 +102,11 @@ public class SignIn extends AppCompatActivity {
         Intent mainIntent = new Intent(SignIn.this,MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
+    }
+
+    public void forgot_password_btn(View view) {
+        Intent forgotPasswordIntent = new Intent(SignIn.this,ForgotPassword.class);
+        forgotPasswordIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(forgotPasswordIntent);
     }
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePage"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/profile_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +15,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            android:background="@drawable/profile_background"
             android:id="@+id/home_layout_profile_details">
 
             <LinearLayout
@@ -30,11 +29,11 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/default_profile"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#757575"
+                    app:civ_border_color="@color/colorPrimary"
                     android:layout_centerInParent="true"
                     android:id="@+id/home_circular_img_profile"/>
 
@@ -42,30 +41,47 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Profile Name"
+                    android:textColor="#050505"
+                    android:fontFamily="@font/abhaya_libre_extrabold"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:id="@+id/home_text_name_profile"/>
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_power_off_solid"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:onClick="signOutButton"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:drawableStart="@drawable/ic_user_edit_solid"
-                android:text="  Edit"
-                android:textStyle="bold"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableStart="@drawable/ic_user_edit_solid"
+                    android:text="  Edit"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_power_off_solid"
+                    android:text="Logout  "
+                    android:onClick="signOutButton"
+                    android:layout_marginTop="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textAlignment="textEnd"/>
+
+            </LinearLayout>
+
+
 
         </RelativeLayout>
 
@@ -75,9 +91,9 @@
             android:alignmentMode="alignMargins"
             android:columnOrderPreserved="false"
             android:rowCount="3"
+            android:background="@drawable/profile_background"
             android:columnCount="2"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:id="@+id/home_layout_grid_options"
             android:layout_below="@id/home_layout_profile_details">
 
             <androidx.cardview.widget.CardView
@@ -92,19 +108,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_book"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Syllabus"
+                        android:textColor="#050505"
+                        android:fontFamily="@font/abhaya_libre_extrabold"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"/>
 
@@ -124,19 +142,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_bell"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Notice"
+                        android:textColor="#050505"
+                        android:fontFamily="@font/abhaya_libre_extrabold"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"/>
 
@@ -156,19 +176,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_feedback"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Feedback"
+                        android:textColor="#050505"
+                        android:fontFamily="@font/abhaya_libre_extrabold"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"/>
 
@@ -188,19 +210,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_achievement"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Achievements"
+                        android:textColor="#050505"
+                        android:fontFamily="@font/abhaya_libre_extrabold"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"/>
 
@@ -220,19 +244,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_info"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Information"
+                        android:textColor="#050505"
+                        android:fontFamily="@font/abhaya_libre_extrabold"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"/>
 
@@ -252,19 +278,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_schedule"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Schedule"
+                        android:textColor="#050505"
+                        android:fontFamily="@font/abhaya_libre_extrabold"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"/>
 
@@ -273,6 +301,20 @@
             </androidx.cardview.widget.CardView>
 
         </GridLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact us at\ndeptcsacet@gmail.com"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#050505"
+            android:fontFamily="@font/abhaya_libre_extrabold"
+            android:layout_below="@id/home_layout_grid_options"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"/>
 
     </RelativeLayout>
 

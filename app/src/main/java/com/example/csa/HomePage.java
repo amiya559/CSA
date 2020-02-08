@@ -15,7 +15,6 @@ public class HomePage extends AppCompatActivity {
     // UI declare
     TextView tvName;
 
-    // Java Amiya Rout
 
     // Firebase variables
     FirebaseAuth firebaseAuth;
@@ -30,14 +29,14 @@ public class HomePage extends AppCompatActivity {
         tvName = (TextView) findViewById(R.id.home_text_name_profile);
 
         // Firebase declare
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        firebaseUser = firebaseAuth.getCurrentUser();
-//
-//        tvName.setText(firebaseUser.getDisplayName());
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        tvName.setText(firebaseUser.getDisplayName());
     }
 
     public void signOutButton(View view) {
-//        firebaseAuth.signOut();
+        firebaseAuth.signOut();
         Intent mainIntent = new Intent(HomePage.this,MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);

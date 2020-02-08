@@ -143,7 +143,7 @@ public class SignUp extends AppCompatActivity {
                                                                     deleteAccount();
                                                                 } else {
                                                                     layoutLoader.setVisibility(View.INVISIBLE);
-                                                                    Toast.makeText(SignUp.this,"Data Stored Successfully",Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
                                                                     Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
                                                                     continueRegIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                                     startActivity(continueRegIntent);
