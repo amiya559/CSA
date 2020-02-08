@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    android:background="#fff"
+    android:background="@drawable/profile_background"
     tools:context=".SignIn">
 
     <LinearLayout
@@ -75,15 +75,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:onClick="createAccountBtn"
-                android:text="Create Account"
+                android:onClick="troubleSigningInBtn"
+                android:text="Trouble signing in ?"
                 android:textStyle="bold"
                 android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Forgot Password?"
+                android:text="Forgot password?"
                 android:onClick="forgot_password_btn"
                 android:layout_marginTop="5dp"
                 android:textSize="15sp"

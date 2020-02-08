@@ -45,11 +45,6 @@ public class SignIn extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public void createAccountBtn(View view) {
-        Intent signUpIntent = new Intent(SignIn.this,SignUp.class);
-        signUpIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(signUpIntent);
-    }
 
     public void signInButton(View view) {
         // Get data
@@ -76,7 +71,7 @@ public class SignIn extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
                         layoutLoader.setVisibility(View.GONE);
-                        Toast.makeText(SignIn.this,"Unable to log in/Password may changed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignIn.this,"Unable to log in/Password may incorrect or changed",Toast.LENGTH_SHORT).show();
                     } else {
 
                         // Check for email verification
@@ -108,5 +103,10 @@ public class SignIn extends AppCompatActivity {
         Intent forgotPasswordIntent = new Intent(SignIn.this,ForgotPassword.class);
         forgotPasswordIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(forgotPasswordIntent);
+    }
+
+    public void troubleSigningInBtn(View view) {
+
+
     }
 }
