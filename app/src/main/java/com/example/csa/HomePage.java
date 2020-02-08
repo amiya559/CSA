@@ -15,6 +15,8 @@ public class HomePage extends AppCompatActivity {
     // UI declare
     TextView tvName;
 
+    // Java Amiya
+
     // Firebase variables
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
