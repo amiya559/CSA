@@ -25,17 +25,17 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         // UI initialize
-        tvName = (TextView) findViewById(R.id.home_text_name);
+        tvName = (TextView) findViewById(R.id.home_text_name_profile);
 
         // Firebase declare
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-
-        tvName.setText("Hello "+firebaseUser.getDisplayName());
+//        firebaseAuth = FirebaseAuth.getInstance();
+//        firebaseUser = firebaseAuth.getCurrentUser();
+//
+//        tvName.setText(firebaseUser.getDisplayName());
     }
 
     public void signOutButton(View view) {
-        firebaseAuth.signOut();
+//        firebaseAuth.signOut();
         Intent mainIntent = new Intent(HomePage.this,MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
