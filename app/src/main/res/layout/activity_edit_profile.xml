@@ -8,37 +8,39 @@
     android:background="@drawable/profile_background"
     tools:context=".EditProfile">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_settings"
             android:layout_width="match_parent"
             android:background="@drawable/profile_background"
-        android:layout_height="50dp"
-            >
+            android:layout_height="50dp">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:padding="5dp"
-                    android:layout_height="match_parent">
+                    android:orientation="horizontal"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="18dp">
 
                     <TextView
                         android:id="@+id/exit_editprofile_btn"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Exit"
                         android:textAlignment="textStart"
                         android:textColor="#fff"
                         android:textSize="17sp"
                         android:textStyle="bold"
-                        />
+                        android:onClick="exitEditButton"/>
 
                     <TextView
                         android:id="@+id/update_account_editprofile_btn"
@@ -50,25 +52,21 @@
                         android:textStyle="bold"
                         android:textAlignment="textEnd"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:onClick="updateProfileButton"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
-
-
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/editprofile_profile_image"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/profile"
-            android:layout_below="@+id/app_bar_settings"
             android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            />
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/profile_image_change_btn"
@@ -77,57 +75,42 @@
             android:text="Change Profile"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
             android:layout_marginTop="4dp"
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/editprofile_profile_image"
-            android:layout_centerHorizontal="true"
-            />
+            android:textColor="@android:color/black"/>
 
         <EditText
-            android:id="@+id/editprofile_full_name"
+            android:id="@+id/editprofile_edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/profile_image_change_btn"
             android:hint="Full Name"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="25dp"
-            />
+            android:layout_marginTop="25dp"/>
 
         <EditText
-            android:id="@+id/editprofile_email"
+            android:id="@+id/editprofile_edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editprofile_full_name"
             android:hint="Email"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp"/>
 
         <EditText
-            android:id="@+id/editprofile_regdno"
+            android:id="@+id/editprofile_edit_regdno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editprofile_email"
             android:hint="Registration No"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp"/>
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:id="@+id/editprofile_spinner"
-            android:layout_below="@+id/editprofile_regdno"
+            android:layout_height="45dp"
+            android:id="@+id/editprofile_spinner_sem"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp"/>
 
-
-    </RelativeLayout>
-
-
+    </LinearLayout>
 
 </ScrollView>
