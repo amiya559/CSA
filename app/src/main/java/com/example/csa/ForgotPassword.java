@@ -82,7 +82,7 @@ public class ForgotPassword extends AppCompatActivity {
         super.onBackPressed();Intent mainIntent = new Intent(ForgotPassword.this,MainActivity.class);
         Intent signInIntent = new Intent(ForgotPassword.this,SignIn.class);
         signInIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(ForgotPassword.this,R.anim.slide_from_left,R.anim.no_change);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(ForgotPassword.this,R.anim.slide_from_left,R.anim.no_anim);
         startActivity(signInIntent,option.toBundle());
 
     }

@@ -95,14 +95,14 @@ public class SignIn extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent mainIntent = new Intent(SignIn.this,MainActivity.class);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_left,R.anim.no_change);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_left,R.anim.no_anim);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent,option.toBundle());
     }
 
     public void forgot_password_btn(View view) {
         Intent forgotPasswordIntent = new Intent(SignIn.this,ForgotPassword.class);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_right,R.anim.no_change);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_right,R.anim.no_anim);
         startActivity(forgotPasswordIntent,option.toBundle());
     }
 

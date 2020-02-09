@@ -151,7 +151,7 @@ public class SignUp extends AppCompatActivity {
                                                                     layoutLoader.setVisibility(View.GONE);
                                                                     Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
                                                                     Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
-                                                                    ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_change);
+                                                                    ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_anim);
                                                                     continueRegIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                                     startActivity(continueRegIntent,option.toBundle());
                                                                 }
@@ -185,7 +185,7 @@ public class SignUp extends AppCompatActivity {
         super.onBackPressed();
         Intent mainIntent = new Intent(SignUp.this,MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_right,R.anim.no_change);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_right,R.anim.no_anim);
         startActivity(mainIntent,option.toBundle());
     }
 }
