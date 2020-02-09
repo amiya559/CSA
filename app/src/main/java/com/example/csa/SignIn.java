@@ -3,6 +3,7 @@ package com.example.csa;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,6 @@ public class SignIn extends AppCompatActivity {
 
     // Firebase variables
     FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class SignIn extends AppCompatActivity {
         if (email.isEmpty()) {
             etEmail.requestFocus();
             etEmail.setError("Field left blank");
-        } else if (!email.contains("@") && !email.contains(".com")) {
+        } else if (!email.contains("@") || !email.contains(".com")) {
             etEmail.setText("");
             etEmail.requestFocus();
             etEmail.setError("Invalid format");
@@ -71,19 +71,19 @@ public class SignIn extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
                         layoutLoader.setVisibility(View.GONE);
-                        Toast.makeText(SignIn.this,"Unable to log in/Password may incorrect or changed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignIn.this,"Unable to log in/Password may be incorrect or changed",Toast.LENGTH_LONG).show();
                     } else {
 
                         // Check for email verification
                         if (firebaseAuth.getCurrentUser().isEmailVerified()) {
                             layoutLoader.setVisibility(View.GONE);
-                            Toast.makeText(SignIn.this,"Log in successful",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignIn.this,"Log in successful",Toast.LENGTH_LONG).show();
                             Intent homePageIntent = new Intent(SignIn.this,HomePage.class);
                             homePageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(homePageIntent);
                         } else {
                             layoutLoader.setVisibility(View.GONE);
-                            Toast.makeText(SignIn.this,"Email verification incomplete",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignIn.this,"Email verification incomplete",Toast.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -95,18 +95,25 @@ public class SignIn extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent mainIntent = new Intent(SignIn.this,MainActivity.class);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_left,R.anim.no_change);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(mainIntent);
+        startActivity(mainIntent,option.toBundle());
     }
 
     public void forgot_password_btn(View view) {
         Intent forgotPasswordIntent = new Intent(SignIn.this,ForgotPassword.class);
-        forgotPasswordIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(forgotPasswordIntent);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_right,R.anim.no_change);
+        startActivity(forgotPasswordIntent,option.toBundle());
     }
 
     public void troubleSigningInBtn(View view) {
-
-
+        Toast.makeText(SignIn.this,"Please email us your query",Toast.LENGTH_LONG).show();
+        Intent troubleIntent = new Intent(Intent.ACTION_SEND);
+        String[] recipient = {"deptcsacet@gmail.com"};
+        troubleIntent.putExtra(Intent.EXTRA_EMAIL,recipient);
+        troubleIntent.putExtra(Intent.EXTRA_SUBJECT,"Trouble signing in to the app");
+        troubleIntent.setType("text/html");
+        troubleIntent.setPackage("com.google.android.gm");
+        startActivity(Intent.createChooser(troubleIntent, "Send mail"));
     }
 }

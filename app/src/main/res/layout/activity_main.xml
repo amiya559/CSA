@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:src="@drawable/logo"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:scaleType="fitCenter" />
 
     <TextView
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/abhaya_libre_extrabold"
-                android:text="Hello, Students  "
+                android:text="Hello, Students"
                 android:textAlignment="center"
                 android:textColor="#050505"
                 android:textSize="20sp"

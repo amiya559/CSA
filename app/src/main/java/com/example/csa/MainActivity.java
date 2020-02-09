@@ -1,10 +1,16 @@
 package com.example.csa;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.hardware.biometrics.BiometricPrompt;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.CancellationSignal;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +18,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null && firebaseUser.isEmailVerified()) {
-                    layoutLoader.setVisibility(View.INVISIBLE);
-                    Toast.makeText(MainActivity.this,"Logging in",Toast.LENGTH_SHORT).show();
+                    layoutLoader.setVisibility(View.GONE);
+                    Toast.makeText(MainActivity.this,"Welcome back "+firebaseUser.getDisplayName(),Toast.LENGTH_SHORT).show();
                     Intent homePageIntent = new Intent(MainActivity.this,HomePage.class);
                     homePageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(homePageIntent);
                 } else {
-                    layoutLoader.setVisibility(View.INVISIBLE);
+                    layoutLoader.setVisibility(View.GONE);
                     layoutSelectSetup.setVisibility(View.VISIBLE);
                 }
             }
@@ -55,13 +64,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signUpNowButton(View view) {
-        Intent intent=new Intent(MainActivity.this,SignUp.class);
-        startActivity(intent);
+        Intent signUpIntent = new Intent(MainActivity.this,SignUp.class);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(MainActivity.this,R.anim.slide_from_left,R.anim.no_change);
+        startActivity(signUpIntent,option.toBundle());
     }
 
     public void signInNowBtn(View view) {
-        Intent intent=new Intent(MainActivity.this,SignIn.class);
-        startActivity(intent);
+        Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(MainActivity.this,R.anim.slide_from_right,R.anim.no_change);
+        startActivity(signInIntent,option.toBundle());
     }
 
     // Verify If User Is Signed In

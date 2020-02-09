@@ -3,6 +3,7 @@ package com.example.csa;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -74,19 +75,24 @@ public class SignUp extends AppCompatActivity {
         // Verify data
         if (name.isEmpty()) {
             etName.requestFocus();
-            etName.setError("Field left blank");
+            etName.setError("Field cannot be left blank");
         } else if (email.isEmpty()) {
+            etName.setError(null);
             etEmail.requestFocus();
-            etEmail.setError("Field left blank");
-        } else if (!email.contains("@") && !email.contains(".com")) {
+            etEmail.setError("Field cannot be left blank");
+        } else if (!email.contains("@") || !email.contains(".com")) {
+            etName.setError(null);
             etEmail.setText("");
             etEmail.requestFocus();
             etEmail.setError("Invalid format");
         } else if (password.isEmpty()) {
+            etEmail.setError(null);
             etPassword.requestFocus();
-            etPassword.setError("Field left blank");
+            etPassword.setError("Field cannot be left blank");
         } else {
-
+            etEmail.setError(null);
+            etName.setError(null);
+            etPassword.setError(null);
             // Check duplicate email
             firebaseAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                 @Override
@@ -104,7 +110,7 @@ public class SignUp extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(!task.isSuccessful()) {
-                                    layoutLoader.setVisibility(View.INVISIBLE);
+                                    layoutLoader.setVisibility(View.GONE);
                                     Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                                 } else {
 
@@ -114,7 +120,7 @@ public class SignUp extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(!task.isSuccessful()) {
-                                                layoutLoader.setVisibility(View.INVISIBLE);
+                                                layoutLoader.setVisibility(View.GONE);
                                                 Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                                                 deleteAccount();
                                             } else {
@@ -124,7 +130,7 @@ public class SignUp extends AppCompatActivity {
                                                 firebaseUser.updateProfile(request).addOnFailureListener(new OnFailureListener() {
                                                     @Override
                                                     public void onFailure(@NonNull Exception e) {
-                                                        layoutLoader.setVisibility(View.INVISIBLE);
+                                                        layoutLoader.setVisibility(View.GONE);
                                                         Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                                                         deleteAccount();
                                                     }
@@ -138,15 +144,16 @@ public class SignUp extends AppCompatActivity {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {
                                                                 if (!task.isSuccessful()) {
-                                                                    layoutLoader.setVisibility(View.INVISIBLE);
+                                                                    layoutLoader.setVisibility(View.GONE);
                                                                     Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                                                                     deleteAccount();
                                                                 } else {
-                                                                    layoutLoader.setVisibility(View.INVISIBLE);
+                                                                    layoutLoader.setVisibility(View.GONE);
                                                                     Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
                                                                     Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
+                                                                    ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_change);
                                                                     continueRegIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                                    startActivity(continueRegIntent);
+                                                                    startActivity(continueRegIntent,option.toBundle());
                                                                 }
                                                             }
                                                         });
@@ -178,6 +185,7 @@ public class SignUp extends AppCompatActivity {
         super.onBackPressed();
         Intent mainIntent = new Intent(SignUp.this,MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(mainIntent);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_right,R.anim.no_change);
+        startActivity(mainIntent,option.toBundle());
     }
 }
