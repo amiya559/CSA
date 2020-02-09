@@ -101,7 +101,7 @@ public class EditProfile extends AppCompatActivity {
             }
         });
     }
-    // Some
+    // Something
     public void exitEditButton(View view) {
         onBackPressed();
     }
