@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void signUpNowButton(View view) {
         Intent signUpIntent = new Intent(MainActivity.this,SignUp.class);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(MainActivity.this,R.anim.slide_from_left,R.anim.no_change);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(MainActivity.this,R.anim.slide_from_left,R.anim.no_anim);
         startActivity(signUpIntent,option.toBundle());
     }
 
     public void signInNowBtn(View view) {
         Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(MainActivity.this,R.anim.slide_from_right,R.anim.no_change);
+        ActivityOptions option = ActivityOptions.makeCustomAnimation(MainActivity.this,R.anim.slide_from_right,R.anim.no_anim);
         startActivity(signInIntent,option.toBundle());
     }
 
