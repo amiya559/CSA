@@ -137,9 +137,14 @@ public class SignUp extends AppCompatActivity {
                                                 }).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-
+                                                        layoutLoader.setVisibility(View.GONE);
+                                                        Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
+                                                        Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
+                                                        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_anim);
+                                                        continueRegIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                        startActivity(continueRegIntent,option.toBundle());
                                                         // Store data to database
-                                                        Student student= new Student(email);
+                                                        Student student = new Student();
                                                         databaseReference.child(firebaseUser.getDisplayName()).setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {
@@ -148,12 +153,6 @@ public class SignUp extends AppCompatActivity {
                                                                     Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                                                                     deleteAccount();
                                                                 } else {
-                                                                    layoutLoader.setVisibility(View.GONE);
-                                                                    Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
-                                                                    Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
-                                                                    ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_anim);
-                                                                    continueRegIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                                    startActivity(continueRegIntent,option.toBundle());
                                                                 }
                                                             }
                                                         });

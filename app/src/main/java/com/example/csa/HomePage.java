@@ -44,13 +44,17 @@ public class HomePage extends AppCompatActivity {
 
     public void editProfileBtn(View view) {
         Intent editProfileIntent = new Intent(HomePage.this,EditProfile.class);
-        editProfileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(editProfileIntent);
     }
 
     public void feedback_btn(View view) {
         Intent feedbackBtnIntent = new Intent(HomePage.this,SelectFaculty.class);
-        feedbackBtnIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(feedbackBtnIntent);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        tvName.setText(firebaseUser.getDisplayName());
     }
 }

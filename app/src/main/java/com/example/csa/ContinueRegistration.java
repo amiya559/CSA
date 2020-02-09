@@ -127,33 +127,21 @@ public class ContinueRegistration extends AppCompatActivity {
         // Add data
         else {
             layoutLoader.setVisibility(View.VISIBLE);
-            databaseReference.addValueEventListener(new ValueEventListener() {
+            Student student = new Student(semester,regdNo);
+            databaseReference.setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Student student = (Student) dataSnapshot.getValue(Student.class);
-                    student.setSemester(semester);
-                    student.setRegdNo(regdNo);
-                    databaseReference.setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(!task.isSuccessful()) {
-                                layoutLoader.setVisibility(View.INVISIBLE);
-                                Toast.makeText(ContinueRegistration.this,"Registration Failed",Toast.LENGTH_SHORT).show();
-                                deleteAccount();
-                            } else {
-                                layoutLoader.setVisibility(View.INVISIBLE);
-                                Toast.makeText(ContinueRegistration.this,"Please verify your email to finish sign up",Toast.LENGTH_SHORT).show();
-                                Intent signInIntent = new Intent(ContinueRegistration.this,SignIn.class);
-                                signInIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(signInIntent);
-                            }
-                        }
-                    });
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(!task.isSuccessful()) {
+                        layoutLoader.setVisibility(View.INVISIBLE);
+                        Toast.makeText(ContinueRegistration.this,"Registration Failed",Toast.LENGTH_SHORT).show();
+                        deleteAccount();
+                    } else {
+                        layoutLoader.setVisibility(View.INVISIBLE);
+                        Toast.makeText(ContinueRegistration.this,"Please verify your email to finish sign up",Toast.LENGTH_SHORT).show();
+                        Intent signInIntent = new Intent(ContinueRegistration.this,SignIn.class);
+                        signInIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(signInIntent);
+                    }
                 }
             });
         }
