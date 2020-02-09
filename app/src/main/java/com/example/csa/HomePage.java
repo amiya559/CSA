@@ -41,4 +41,10 @@ public class HomePage extends AppCompatActivity {
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
     }
+
+    public void editProfileBtn(View view) {
+        Intent editProfileIntent = new Intent(HomePage.this,EditProfile.class);
+        editProfileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(editProfileIntent);
+    }
 }
