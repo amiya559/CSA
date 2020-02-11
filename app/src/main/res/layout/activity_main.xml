@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
-    android:background="@drawable/profile_background"
+    android:padding="20dp"
+    android:background="@drawable/activitybackground"
     tools:context=".MainActivity">
 
     <ImageView
@@ -50,10 +50,11 @@
                 android:text="Hello, Students"
                 android:textAlignment="center"
                 android:textColor="#050505"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -66,11 +67,10 @@
                 app:strokeColor="@color/colorPrimary"
                 app:strokeWidth="2dp"
                 app:cornerRadius="10dp"
-                android:backgroundTint="@color/background"
                 android:text="S i g n   U p\nN o w"
                 android:textAlignment="center"
                 android:textColor="#59B9F0"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:onClick="signUpNowButton"/>
 
@@ -89,10 +89,11 @@
                 android:text="Have An Account ?"
                 android:textAlignment="center"
                 android:textColor="#050505"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:id="@+id/main_join_now_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -104,14 +105,14 @@
                 app:strokeColor="@color/colorPrimary"
                 app:strokeWidth="2dp"
                 app:cornerRadius="10dp"
+                android:background="@drawable/activitybackground"
                 android:drawableTop="@drawable/ic_studentt"
                 android:fontFamily="@font/maven_pro_medium"
                 android:padding="10dp"
-                android:backgroundTint="@color/background"
                 android:text="S i g n   i n\nN o w"
                 android:textAlignment="center"
                 android:textColor="#59B9F0"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"/>
 
         </LinearLayout>

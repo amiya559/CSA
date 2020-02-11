@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/profile_background"
+    android:background="@drawable/activitybackground"
     tools:context=".EditProfile">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_settings"
             android:layout_width="match_parent"
-            android:background="@drawable/profile_background"
+            android:background="@drawable/activitybackground"
             android:layout_height="50dp">
 
             <androidx.appcompat.widget.Toolbar
@@ -37,7 +37,6 @@
                         android:layout_height="wrap_content"
                         android:text="Exit"
                         android:textAlignment="textStart"
-                        android:textColor="#fff"
                         android:textSize="17sp"
                         android:textStyle="bold"
                         android:onClick="exitEditButton"/>
@@ -47,7 +46,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Update"
-                        android:textColor="#fff"
                         android:textSize="17sp"
                         android:textStyle="bold"
                         android:textAlignment="textEnd"
@@ -79,30 +77,90 @@
             android:layout_marginTop="4dp"
             android:textColor="@android:color/black"/>
 
-        <EditText
-            android:id="@+id/editprofile_edit_name"
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Full Name"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeWidth="2dp">
 
-        <EditText
-            android:id="@+id/editprofile_edit_email"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textStyle="bold"
+                android:inputType="textEmailAddress"
+                android:textSize="13sp"
+                android:id="@+id/editprofile_edit_name"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeWidth="2dp">
 
-        <EditText
-            android:id="@+id/editprofile_edit_regdno"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textStyle="bold"
+                android:inputType="textEmailAddress"
+                android:textSize="13sp"
+                android:id="@+id/editprofile_edit_email"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Registration No"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textStyle="bold"
+                android:inputType="textEmailAddress"
+                android:textSize="13sp"
+                android:id="@+id/editprofile_edit_regdno"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
             android:layout_width="match_parent"

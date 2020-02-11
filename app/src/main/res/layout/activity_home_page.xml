@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePage"
-    android:background="@drawable/profile_background">
+    android:background="@drawable/activitybackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -92,7 +92,7 @@
             android:alignmentMode="alignMargins"
             android:columnOrderPreserved="false"
             android:rowCount="3"
-            android:background="@drawable/profile_background"
+            android:background="@drawable/activitybackground"
             android:columnCount="2"
             android:id="@+id/home_layout_grid_options"
             android:layout_below="@id/home_layout_profile_details">

@@ -71,7 +71,7 @@ public class SignIn extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
                         layoutLoader.setVisibility(View.GONE);
-                        Toast.makeText(SignIn.this,"Unable to log in/Password may be incorrect or changed",Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignIn.this,"Please check your password",Toast.LENGTH_LONG).show();
                     } else {
 
                         // Check for email verification

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/profile_background"
+    android:background="@drawable/activitybackground"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="30dp"
     tools:context=".SignUp">
 
     <LinearLayout
@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/logo"
             android:scaleType="fitCenter"/>
 
@@ -30,6 +30,10 @@
             android:focusableInTouchMode="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeWidth="2dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -51,6 +55,10 @@
             android:focusableInTouchMode="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeWidth="2dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -72,6 +80,10 @@
             android:focusableInTouchMode="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeWidth="2dp"
             app:passwordToggleEnabled="true">
 
@@ -95,7 +107,7 @@
             android:paddingEnd="10dp"
             android:text="Already Have An Account ?"
             android:textAlignment="textEnd"
-            android:textSize="15sp"/>
+            android:textSize="13sp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,20 +137,20 @@
 
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:text="c o n t i n u e\nr e g i s t r a t i o n"
-            android:layout_gravity="center"
-            android:onClick="continueRegdBtn"
-            app:strokeWidth="2dp"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/round_arrow_forward"
+            android:elevation="0dp"
             android:layout_marginTop="20dp"
-            app:cornerRadius="10dp"
-            android:textAlignment="center"
-            android:fontFamily="@font/maven_pro_medium"
-            android:textSize="11sp"
-            app:strokeColor="@color/colorPrimary"/>
+            android:layout_gravity="center"
+            app:elevation="0dp"
+            android:backgroundTint="#2B8DC5"
+            app:fabCustomSize="60dp"
+            tools:ignore="RelativeOverlap"
+            android:onClick="continueRegdBtn"/>
 
     </LinearLayout>
 

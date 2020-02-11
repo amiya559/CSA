@@ -16,7 +16,6 @@ public class SelectFaculty extends AppCompatActivity {
 
     public void dasboardImageBtn(View view) {
         Intent facualtyBtnIntent = new Intent(SelectFaculty.this,FeedbackForm.class);
-        facualtyBtnIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(facualtyBtnIntent);
 
     }
