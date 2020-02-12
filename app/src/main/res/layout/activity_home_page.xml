@@ -418,12 +418,11 @@
             android:text="Contact us at\ndeptcsacet@gmail.com"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:textSize="15sp"
-            android:textStyle="bold"
+            android:textSize="8sp"
+            android:textStyle="bold|italic"
             android:textColor="#050505"
-            android:fontFamily="@font/abhaya_libre_extrabold"
             android:layout_below="@id/home_layout_grid_options"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"/>
 
     </RelativeLayout>

@@ -76,6 +76,4 @@
         android:onClick="nextButton"/>
 
 
-
-
 </LinearLayout>

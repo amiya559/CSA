@@ -1,150 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/font"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@drawable/activitybackground"
+    android:background="@drawable/mainactivitybackground"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:src="@drawable/logo"
-        android:layout_marginTop="70dp"
-        android:scaleType="fitCenter" />
 
     <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to The Official App of \nCSA"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="30dp"
+        android:text="Not registered yet?"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Register."
+        android:onClick="signUpNowButton"
+        android:textColor="@color/colorPrimary"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome!"
         android:fontFamily="@font/abhaya_libre_extrabold"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/background"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.092" />
+
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:alpha="0.5"
+        android:text="  To the official app of CSA department!"
+        android:textColor="@color/background"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/maven_pro_medium"
+        android:onClick="signInNowBtn"
+        android:text="L o g i n"
         android:textAlignment="center"
-        android:textColor="#050505"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="12sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.023"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="2dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:weightSum="2"
-        android:id="@+id/main_layout_select_setup"
-        android:visibility="invisible">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:textAlignment="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/abhaya_libre_extrabold"
-                android:text="Hello, Students"
-                android:textAlignment="center"
-                android:textColor="#050505"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="2dp"
-                android:drawableTop="@drawable/ic_student"
-                android:fontFamily="@font/maven_pro_medium"
-                android:padding="10dp"
-                app:strokeColor="@color/colorPrimary"
-                app:strokeWidth="2dp"
-                app:cornerRadius="10dp"
-                android:text="S i g n   U p\nN o w"
-                android:textAlignment="center"
-                android:textColor="#59B9F0"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:onClick="signUpNowButton"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/abhaya_libre_extrabold"
-                android:text="Have An Account ?"
-                android:textAlignment="center"
-                android:textColor="#050505"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:id="@+id/main_join_now_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:onClick="signInNowBtn"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="5dp"
-                app:strokeColor="@color/colorPrimary"
-                app:strokeWidth="2dp"
-                app:cornerRadius="10dp"
-                android:background="@drawable/activitybackground"
-                android:drawableTop="@drawable/ic_studentt"
-                android:fontFamily="@font/maven_pro_medium"
-                android:padding="10dp"
-                android:text="S i g n   i n\nN o w"
-                android:textAlignment="center"
-                android:textColor="#59B9F0"
-                android:textSize="12sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="25dp"
-        android:id="@+id/main_layout_loader">
-
-        <com.github.ybq.android.spinkit.SpinKitView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            style="@style/SpinKitView.Circle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:SpinKit_Color="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="L o a d i n g . . ."
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:fontFamily="@font/abhaya_libre_extrabol"
-            android:id="@+id/main_text_loader"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
