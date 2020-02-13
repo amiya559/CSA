@@ -57,4 +57,9 @@ public class HomePage extends AppCompatActivity {
         super.onPostResume();
         tvName.setText(firebaseUser.getDisplayName());
     }
+
+    public void facultyInfo(View view) {
+        Intent facultyInfo = new Intent(HomePage.this,FacultyInfo.class);
+        startActivity(facultyInfo);
+    }
 }
