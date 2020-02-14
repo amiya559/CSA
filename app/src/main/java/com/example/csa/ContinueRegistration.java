@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,11 +38,9 @@ public class ContinueRegistration extends AppCompatActivity {
 
     // UI declaration
     Spinner semesterSpinner;
-    LinearLayout layoutLoader;
-    EditText etRegdNo;
-    TextView tvLoaderText;
+    EditText etRegdNo,etName;
 
-    String semester,regdNo;
+    String semester,regdNo,name;
 
     // Firebase variables
     FirebaseAuth firebaseAuth;
@@ -56,9 +55,8 @@ public class ContinueRegistration extends AppCompatActivity {
 
         // UI initialize
         semesterSpinner = (Spinner) findViewById(R.id.continue_reg_spinner_semester_list);
-        layoutLoader = (LinearLayout) findViewById(R.id.continue_reg_layout_loader);
         etRegdNo = (EditText) findViewById(R.id.continue_reg_edit_reg_no);
-        tvLoaderText = (TextView) findViewById(R.id.continue_reg_text_loader);
+        etName = (EditText) findViewById(R.id.continue_reg_edit_name);
 
         // Create semester list
         List<String> semesterlist = new ArrayList<>();
@@ -105,42 +103,54 @@ public class ContinueRegistration extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Users").child(firebaseUser.getDisplayName());
+        databaseReference = firebaseDatabase.getReference("Users");
     }
 
     public void signUpButton(View view) {
-        // Close keyboard
-        etRegdNo.onEditorAction(EditorInfo.IME_ACTION_DONE);
-
         // Get data
+        name = etName.getText().toString().trim();
         regdNo = etRegdNo.getText().toString().trim();
 
         // Verify data
-        if (regdNo.isEmpty()) {
+        if (name.isEmpty()) {
+            etName.requestFocus();
+            etName.setError("Field left blank");
+        } else if (regdNo.isEmpty()) {
+            etName.setError(null);
             etRegdNo.requestFocus();
             etRegdNo.setError("Field left blank");
-        } else if (semester.isEmpty()) {
-            semesterSpinner.requestFocus();
-            Toast.makeText(ContinueRegistration.this,"Select your semester",Toast.LENGTH_SHORT).show();
         }
 
         // Add data
         else {
-            layoutLoader.setVisibility(View.VISIBLE);
-            Student student = new Student(semester,regdNo);
-            databaseReference.setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
+            etName.setError(null);
+            etRegdNo.setError(null);
+
+            // Set display name
+            UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
+            firebaseUser.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if(!task.isSuccessful()) {
-                        layoutLoader.setVisibility(View.INVISIBLE);
+
+                    if (!task.isSuccessful()) {
                         Toast.makeText(ContinueRegistration.this,"Registration Failed",Toast.LENGTH_SHORT).show();
-                        deleteAccount();
                     } else {
-                        layoutLoader.setVisibility(View.INVISIBLE);
-                        Toast.makeText(ContinueRegistration.this,"Please verify your email to finish sign up",Toast.LENGTH_SHORT).show();
-                        Intent signInIntent = new Intent(ContinueRegistration.this,SignIn.class);
-                        signInIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(signInIntent);
+                        // Add details to database
+                        Student student = new Student(semester,regdNo);
+                        databaseReference.child(name).setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(!task.isSuccessful()) {
+                                    Toast.makeText(ContinueRegistration.this,"Registration Failed",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    firebaseAuth.signOut();
+                                    Toast.makeText(ContinueRegistration.this,"Registration Successful",Toast.LENGTH_SHORT).show();
+                                    Intent signInIntent = new Intent(ContinueRegistration.this,SignIn.class);
+                                    signInIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(signInIntent);
+                                }
+                            }
+                        });
                     }
                 }
             });

@@ -24,33 +24,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:focusable="true"
-            android:layout_marginTop="50dp"
-            android:focusableInTouchMode="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/colorPrimary"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeWidth="2dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textStyle="bold"
-                android:inputType="text"
-                android:textSize="13sp"
-                android:id="@+id/sign_up_edit_name"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint="Email"
+            android:layout_marginTop="50dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -108,34 +83,6 @@
             android:text="Already Have An Account ?"
             android:textAlignment="textEnd"
             android:textSize="13sp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="25dp"
-            android:id="@+id/sign_up_layout_loader"
-            android:visibility="gone">
-
-            <com.github.ybq.android.spinkit.SpinKitView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/SpinKitView.Circle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:SpinKit_Color="@color/colorPrimary"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="L o a d i n g . . ."
-                android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:fontFamily="@font/abhaya_libre_extrabol"
-                android:id="@+id/sign_up_text_loader"/>
-
-        </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"

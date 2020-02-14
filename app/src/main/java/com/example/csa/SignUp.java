@@ -28,17 +28,12 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUp extends AppCompatActivity {
 
     // UI declaration
-    EditText etName,etEmail,etPassword;
-    TextView tvLoaderText;
-    LinearLayout layoutLoader;
+    EditText etEmail,etPassword;
 
-    String name,email,password;
+    String email,password;
 
     // Firebase variables
     FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +41,11 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         // UI initialize
-        etName = (EditText) findViewById(R.id.sign_up_edit_name);
         etEmail = (EditText) findViewById(R.id.sign_up_edit_email);
         etPassword = (EditText) findViewById(R.id.sign_up_edit_password);
-        tvLoaderText = (TextView) findViewById(R.id.sign_up_text_loader);
-        layoutLoader = (LinearLayout) findViewById(R.id.sign_up_layout_loader);
 
         // Firebase declaration
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Users");
     }
 
     public void alreadyHaveAnAccountBtn(View view) {
@@ -68,20 +58,14 @@ public class SignUp extends AppCompatActivity {
         etPassword.onEditorAction(EditorInfo.IME_ACTION_DONE);
 
         // Get data
-        name = etName.getText().toString().trim();
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
 
         // Verify data
-        if (name.isEmpty()) {
-            etName.requestFocus();
-            etName.setError("Field cannot be left blank");
-        } else if (email.isEmpty()) {
-            etName.setError(null);
+        if (email.isEmpty()) {
             etEmail.requestFocus();
             etEmail.setError("Field cannot be left blank");
         } else if (!email.contains("@") || !email.contains(".com")) {
-            etName.setError(null);
             etEmail.setText("");
             etEmail.requestFocus();
             etEmail.setError("Invalid format");
@@ -91,8 +75,8 @@ public class SignUp extends AppCompatActivity {
             etPassword.setError("Field cannot be left blank");
         } else {
             etEmail.setError(null);
-            etName.setError(null);
             etPassword.setError(null);
+
             // Check duplicate email
             firebaseAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                 @Override
@@ -105,62 +89,16 @@ public class SignUp extends AppCompatActivity {
                     } else {
 
                         // Create email authentication
-                        layoutLoader.setVisibility(View.VISIBLE);
-                        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(!task.isSuccessful()) {
-                                    layoutLoader.setVisibility(View.GONE);
                                     Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                                 } else {
-
-                                    // Send email verification link
-                                    firebaseUser = firebaseAuth.getCurrentUser();
-                                    firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(!task.isSuccessful()) {
-                                                layoutLoader.setVisibility(View.GONE);
-                                                Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
-                                                deleteAccount();
-                                            } else {
-
-                                                // Set user profile name
-                                                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
-                                                firebaseUser.updateProfile(request).addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        layoutLoader.setVisibility(View.GONE);
-                                                        Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
-                                                        deleteAccount();
-                                                    }
-                                                }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        layoutLoader.setVisibility(View.GONE);
-                                                        Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
-                                                        Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
-                                                        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_anim);
-                                                        continueRegIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                        startActivity(continueRegIntent,option.toBundle());
-                                                        // Store data to database
-                                                        Student student = new Student();
-                                                        databaseReference.child(firebaseUser.getDisplayName()).setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<Void> task) {
-                                                                if (!task.isSuccessful()) {
-                                                                    layoutLoader.setVisibility(View.GONE);
-                                                                    Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
-                                                                    deleteAccount();
-                                                                } else {
-                                                                }
-                                                            }
-                                                        });
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    });
+                                    Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
+                                    Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
+                                    ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_anim);
+                                    startActivity(continueRegIntent,option.toBundle());
                                 }
                             }
                         });
@@ -168,15 +106,6 @@ public class SignUp extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    private void deleteAccount() {
-        firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-            }
-        });
     }
 
     @Override

@@ -102,35 +102,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="25dp"
-            android:id="@+id/sign_in_layout_loader"
-            android:visibility="gone">
-
-            <com.github.ybq.android.spinkit.SpinKitView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/SpinKitView.Circle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:SpinKit_Color="@color/colorPrimary"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="L o a d i n g . . ."
-                android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:fontFamily="@font/abhaya_libre_extrabol"
-                android:id="@+id/sign_in_text_loader"/>
-
-        </LinearLayout>
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

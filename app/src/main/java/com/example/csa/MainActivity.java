@@ -24,10 +24,6 @@ import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
-    // UI declare
-    LinearLayout layoutLoader,layoutSelectSetup;
-    TextView tvLoaderText;
-
     // Firebase variables
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -38,26 +34,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // UI Initialize
-        //layoutLoader = (LinearLayout) findViewById(R.id.main_layout_loader);
-        //layoutSelectSetup = (LinearLayout) findViewById(R.id.main_layout_select_setup);
-       // tvLoaderText = (TextView) findViewById(R.id.main_text_loader);
-
         // Firebase declare
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 firebaseUser = firebaseAuth.getCurrentUser();
-                if (firebaseUser != null && firebaseUser.isEmailVerified()) {
-                    //layoutLoader.setVisibility(View.GONE);
+                if (firebaseUser != null) {
                     Toast.makeText(MainActivity.this,"Welcome back "+firebaseUser.getDisplayName(),Toast.LENGTH_SHORT).show();
                     Intent homePageIntent = new Intent(MainActivity.this,HomePage.class);
                     homePageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(homePageIntent);
-                } else {
-                    //layoutLoader.setVisibility(View.GONE);
-                    //layoutSelectSetup.setVisibility(View.VISIBLE);
                 }
             }
         };

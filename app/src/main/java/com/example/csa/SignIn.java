@@ -19,11 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignIn extends AppCompatActivity {
-
     // UI declare
     EditText etEmail,etPassword;
-    LinearLayout layoutLoader;
-    TextView tvLoaderText;
 
     String email,password;
 
@@ -38,8 +35,6 @@ public class SignIn extends AppCompatActivity {
         // UI initialize
         etEmail = (EditText) findViewById(R.id.sign_in_edit_email);
         etPassword = (EditText) findViewById(R.id.sign_in_edit_password);
-        layoutLoader = (LinearLayout) findViewById(R.id.sign_in_layout_loader);
-        tvLoaderText = (TextView) findViewById(R.id.sign_in_text_loader);
 
         // Firebase declaration
         firebaseAuth = FirebaseAuth.getInstance();
@@ -65,26 +60,16 @@ public class SignIn extends AppCompatActivity {
         } else {
 
             // Sign in user
-            layoutLoader.setVisibility(View.VISIBLE);
             firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
-                        layoutLoader.setVisibility(View.GONE);
                         Toast.makeText(SignIn.this,"Please check your password",Toast.LENGTH_LONG).show();
                     } else {
-
-                        // Check for email verification
-                        if (firebaseAuth.getCurrentUser().isEmailVerified()) {
-                            layoutLoader.setVisibility(View.GONE);
-                            Toast.makeText(SignIn.this,"Log in successful",Toast.LENGTH_LONG).show();
-                            Intent homePageIntent = new Intent(SignIn.this,HomePage.class);
-                            homePageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(homePageIntent);
-                        } else {
-                            layoutLoader.setVisibility(View.GONE);
-                            Toast.makeText(SignIn.this,"Email verification incomplete",Toast.LENGTH_LONG).show();
-                        }
+                        Toast.makeText(SignIn.this,"Welcome "+firebaseAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_LONG).show();
+                        Intent homePageIntent = new Intent(SignIn.this,HomePage.class);
+                        homePageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(homePageIntent);
                     }
                 }
             });
@@ -107,13 +92,13 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void troubleSigningInBtn(View view) {
-        Toast.makeText(SignIn.this,"Please email us your query",Toast.LENGTH_LONG).show();
-        Intent troubleIntent = new Intent(Intent.ACTION_SEND);
-        String[] recipient = {"deptcsacet@gmail.com"};
-        troubleIntent.putExtra(Intent.EXTRA_EMAIL,recipient);
-        troubleIntent.putExtra(Intent.EXTRA_SUBJECT,"Trouble signing in to the app");
-        troubleIntent.setType("text/html");
-        troubleIntent.setPackage("com.google.android.gm");
-        startActivity(Intent.createChooser(troubleIntent, "Send mail"));
+//        Toast.makeText(SignIn.this,"Please email us your query",Toast.LENGTH_LONG).show();
+//        Intent troubleIntent = new Intent(Intent.ACTION_SEND);
+//        String[] recipient = {"deptcsacet@gmail.com"};
+//        troubleIntent.putExtra(Intent.EXTRA_EMAIL,recipient);
+//        troubleIntent.putExtra(Intent.EXTRA_SUBJECT,"Trouble signing in to the app");
+//        troubleIntent.setType("text/html");
+//        troubleIntent.setPackage("com.google.android.gm");
+//        startActivity(Intent.createChooser(troubleIntent, "Send mail"));
     }
 }
