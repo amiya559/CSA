@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -92,6 +93,10 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void troubleSigningInBtn(View view) {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(SignIn.this);
+        bottomSheetDialog.setContentView(R.layout.trouble_sign_in_bottom_sheet_dialog);
+        bottomSheetDialog.setCanceledOnTouchOutside(true);
+        bottomSheetDialog.show();
 //        Toast.makeText(SignIn.this,"Please email us your query",Toast.LENGTH_LONG).show();
 //        Intent troubleIntent = new Intent(Intent.ACTION_SEND);
 //        String[] recipient = {"deptcsacet@gmail.com"};

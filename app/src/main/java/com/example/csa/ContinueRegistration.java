@@ -1,35 +1,28 @@
 package com.example.csa;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.ybq.android.spinkit.SpinKitView;
+import com.example.csa.Model.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,16 +61,16 @@ public class ContinueRegistration extends AppCompatActivity {
         semesterlist.add("Semester 5");
         semesterlist.add("Semester 6");
 
-        // Style and populate the spinner
+        // Style and populate the spinner_button
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, semesterlist);
 
         // Dropdown layout style
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Attaching data adapter to spinner
+        // Attaching data adapter to spinner_button
         semesterSpinner.setAdapter(adapter);
 
-        // Set listener to spinner
+        // Set listener to spinner_button
         semesterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

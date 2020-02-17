@@ -3,7 +3,6 @@ package com.example.csa;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.csa.Model.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -68,13 +67,13 @@ public class EditProfile extends AppCompatActivity {
         semesterlist.add("Semester 5");
         semesterlist.add("Semester 6");
 
-        // Style and populate the spinner
+        // Style and populate the spinner_button
         final ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, semesterlist);
 
         // Dropdown layout style
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Attaching data adapter to spinner
+        // Attaching data adapter to spinner_button
         semesterSpinner.setAdapter(adapter);
 
         // Firebase declare

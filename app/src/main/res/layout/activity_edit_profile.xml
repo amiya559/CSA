@@ -161,12 +161,21 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/spinner_button"
+            android:layout_height="50dp">
+
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:id="@+id/editprofile_spinner_sem"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"/>
+        />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
     </LinearLayout>
 

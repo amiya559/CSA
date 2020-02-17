@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/activitybackground"
-    tools:context=".FeedbackForm">
+    tools:context=".FeedbackFormQ1">
 
 <ImageView
     android:layout_width="200dp"

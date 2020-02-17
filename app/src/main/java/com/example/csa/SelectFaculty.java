@@ -15,8 +15,8 @@ public class SelectFaculty extends AppCompatActivity {
     }
 
     public void dasboardImageBtn(View view) {
-        Intent facualtyBtnIntent = new Intent(SelectFaculty.this,FeedbackForm.class);
+        Intent facualtyBtnIntent = new Intent(SelectFaculty.this, FeedbackFormQ1.class);
+        facualtyBtnIntent.putExtra("message","Question 1");
         startActivity(facualtyBtnIntent);
-
     }
 }

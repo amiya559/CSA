@@ -7,8 +7,14 @@
 
     <color name="gray">#253A4B</color>
 
-    <color name="color1">#B6A2DF</color>
-    <color name="color2">#6118AA</color>
-    <color name="color3">#162E3C</color>
-    <color name="color4">#DB6B8A</color>
+    <color name="color1">#366381</color>
+    <color name="color2">#866142</color>
+    <color name="color3">#4A3066</color>
+    <color name="color4">#318888</color>
+    <color name="color5">#814B4B</color>
+    <color name="color6">#377265</color>
+    <color name="color7">#283747</color>
+    <color name="color8">#486F8D</color>
+    <color name="color9">#814242</color>
+
 </resources>

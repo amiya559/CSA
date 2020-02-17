@@ -1,4 +1,4 @@
-package com.example.csa;
+package com.example.csa.Model;
 
 public class Student {
 
