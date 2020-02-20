@@ -96,7 +96,7 @@ public class SignUp extends AppCompatActivity {
                                     Toast.makeText(SignUp.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(SignUp.this,"Continuing Registration",Toast.LENGTH_SHORT).show();
-                                    Intent continueRegIntent = new Intent(SignUp.this,ContinueRegistration.class);
+                                    Intent continueRegIntent = new Intent(SignUp.this,HomePage.class);
                                     ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_left,R.anim.no_anim);
                                     startActivity(continueRegIntent,option.toBundle());
                                 }

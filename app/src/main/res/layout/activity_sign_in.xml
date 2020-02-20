@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:onClick="troubleSigningInBtn"
-                android:text="Trouble signing in ?"
+                android:text="Trouble signing in?"
                 android:textStyle="bold"
                 android:textSize="14sp"/>
 

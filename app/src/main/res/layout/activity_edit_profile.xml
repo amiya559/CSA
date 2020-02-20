@@ -69,7 +69,7 @@
             android:id="@+id/profile_image_change_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change Profile"
+            android:text="Add Profile Picture"
             android:textSize="17sp"
             android:textStyle="bold"
             android:layout_gravity="center"
@@ -176,6 +176,34 @@
         />
 
         </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="5dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="changeMyemail"
+                android:text="Change my email?"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Change my password?"
+                android:onClick="changeMyPassword"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textAlignment="textEnd"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

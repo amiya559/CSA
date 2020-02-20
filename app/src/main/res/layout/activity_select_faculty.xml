@@ -1,42 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
-    android:padding="20dp"
+    android:background="@drawable/activitybackground"
+    android:padding="30dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".SelectFaculty"
     >
 
-
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Select Your Faculty To Give \nFeedback"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#050505"
+        android:fontFamily="@font/abhaya_libre_extrabold"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/maven_pro_medium"
-            android:text="Select Faculty"
-            android:layout_gravity="center"
-            android:textColor="#050505"
-            android:textSize="30sp"
-            android:textStyle="bold">
 
-        </TextView>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/spinner_button"
+        android:layout_height="50dp">
 
-        <ImageView
+        <Spinner
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/dashboardimage"
-            android:onClick="dasboardImageBtn"
-            android:scaleType="fitCenter"
+            android:layout_height="50dp"
+            android:id="@+id/select_faculty_spinner_faculties_list"
             />
 
-    </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-</ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/round_arrow_forward"
+        android:elevation="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        app:elevation="0dp"
+        android:backgroundTint="#2B8DC5"
+        app:fabCustomSize="60dp"
+        tools:ignore="RelativeOverlap"
+        android:onClick="selectFacultyBtn"/>
+
+</LinearLayout>

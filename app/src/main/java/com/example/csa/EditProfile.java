@@ -167,4 +167,12 @@ public class EditProfile extends AppCompatActivity {
         super.onBackPressed();
         Intent homePageIntent = new Intent(EditProfile.this,HomePage.class);
     }
+
+    public void changeMyemail(View view) {
+
+    }
+
+    public void changeMyPassword(View view) {
+
+    }
 }

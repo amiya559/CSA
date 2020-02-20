@@ -138,7 +138,7 @@ public class ContinueRegistration extends AppCompatActivity {
                                 } else {
                                     firebaseAuth.signOut();
                                     Toast.makeText(ContinueRegistration.this,"Registration Successful",Toast.LENGTH_SHORT).show();
-                                    Intent signInIntent = new Intent(ContinueRegistration.this,SignIn.class);
+                                    Intent signInIntent = new Intent(ContinueRegistration.this,SelectFaculty.class);
                                     signInIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(signInIntent);
                                 }
@@ -159,6 +159,7 @@ public class ContinueRegistration extends AppCompatActivity {
         });
     }
 
+    /*
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -168,4 +169,6 @@ public class ContinueRegistration extends AppCompatActivity {
         signUpIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signUpIntent);
     }
+
+     */
 }
