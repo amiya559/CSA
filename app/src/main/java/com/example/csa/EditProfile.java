@@ -35,7 +35,6 @@ public class EditProfile extends AppCompatActivity {
 
     // UI declare
     EditText etName,etEmail,etRegdNo;
-    Spinner semesterSpinner;
 
     String name,email,regdno,semester,prevName;
 
@@ -53,28 +52,9 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         // UI initialize
-        semesterSpinner = (Spinner) findViewById(R.id.editprofile_spinner_sem);
         etName = (EditText) findViewById(R.id.editprofile_edit_name);
         etEmail = (EditText) findViewById(R.id.editprofile_edit_email);
-        etRegdNo = (EditText) findViewById(R.id.editprofile_edit_regdno);
 
-        // Create semester list
-        List<String> semesterlist = new ArrayList<>();
-        semesterlist.add("Semester 1");
-        semesterlist.add("Semester 2");
-        semesterlist.add("Semester 3");
-        semesterlist.add("Semester 4");
-        semesterlist.add("Semester 5");
-        semesterlist.add("Semester 6");
-
-        // Style and populate the spinner_button
-        final ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, semesterlist);
-
-        // Dropdown layout style
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Attaching data adapter to spinner_button
-        semesterSpinner.setAdapter(adapter);
 
         // Firebase declare
         firebaseAuth = FirebaseAuth.getInstance();
@@ -88,10 +68,8 @@ public class EditProfile extends AppCompatActivity {
                 Student student = (Student) dataSnapshot.getValue(Student.class);
                 etName.setText(prevName);
                 etEmail.setText(firebaseUser.getEmail());
-                etRegdNo.setText(student.getRegdNo());
-                semester = "Semester "+student.getSemester().trim();Toast.makeText(EditProfile.this,semester,Toast.LENGTH_LONG).show();
-                ArrayAdapter<String> adapter = (ArrayAdapter<String>) semesterSpinner.getAdapter();
-                semesterSpinner.setSelection(adapter.getPosition(semester));
+                //etRegdNo.setText(student.getRegdNo());
+
             }
 
             @Override
@@ -110,7 +88,9 @@ public class EditProfile extends AppCompatActivity {
         email = etEmail.getText().toString();
         regdno = etRegdNo.getText().toString();
         semester = semester.substring(9);
-        semesterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+       /*
+        });semesterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 semester = parent.getItemAtPosition(position).toString();
@@ -121,7 +101,6 @@ public class EditProfile extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
                 semester = semester.substring(9);
             }
-        });
 
         // Update Name
         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
@@ -159,7 +138,7 @@ public class EditProfile extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
     }
 
     @Override
@@ -175,4 +154,5 @@ public class EditProfile extends AppCompatActivity {
     public void changeMyPassword(View view) {
 
     }
+
 }
