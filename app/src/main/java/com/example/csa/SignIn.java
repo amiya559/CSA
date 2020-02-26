@@ -106,4 +106,9 @@ public class SignIn extends AppCompatActivity {
 //        troubleIntent.setPackage("com.google.android.gm");
 //        startActivity(Intent.createChooser(troubleIntent, "Send mail"));
     }
+
+    public void adminBtn(View view) {
+        Intent adminIntent = new Intent(SignIn.this,Admin.class);
+        startActivity(adminIntent);
+    }
 }

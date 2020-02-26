@@ -111,6 +111,14 @@
             tools:ignore="RelativeOverlap"
             android:onClick="signInButton"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Are you an admin?"
+            android:onClick="adminBtn"
+            android:layout_marginTop="20dp"
+            android:gravity="end"/>
+
 
     </LinearLayout>
 
