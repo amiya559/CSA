@@ -46,4 +46,7 @@ dependencies {
 
     // Circleimageview Dependecy
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // PDF Viewer
+    compile 'com.github.barteksc:android-pdf-viewer:2.8.2'
 }
