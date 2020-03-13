@@ -64,7 +64,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void syllabus_btn(View view) {
-        Intent viewSyllabus = new Intent(HomePage.this,ViewSyllabusesPDF.class);
+        Intent viewSyllabus = new Intent(HomePage.this,Syllabus.class);
         startActivity(viewSyllabus);
     }
 }

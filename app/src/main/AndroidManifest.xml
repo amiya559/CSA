@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewSyllabusesPDF"></activity>
+        <activity android:name=".PDFOpener"></activity>
+        <activity android:name=".Syllabus" />
+        <activity android:name=".ViewSyllabusesPDF" />
         <activity android:name=".Admin" />
         <activity android:name=".FeedbackFormQ2" />
         <activity android:name=".FacultyInfo" />
