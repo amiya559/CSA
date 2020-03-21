@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.leo.simplearcloader.ArcConfiguration;
+import com.leo.simplearcloader.SimpleArcDialog;
+import com.leo.simplearcloader.SimpleArcLoader;
 
 public class SignIn extends AppCompatActivity {
     // UI declare
@@ -43,6 +47,15 @@ public class SignIn extends AppCompatActivity {
 
 
     public void signInButton(View view) {
+
+        final SimpleArcDialog mDialog = new SimpleArcDialog(this);
+        ArcConfiguration configuration = new ArcConfiguration(this);
+        configuration.setLoaderStyle(SimpleArcLoader.STYLE.COMPLETE_ARC);
+        configuration.setText("Please wait...");
+        //int colorValue = Color.parseColor("#59B9F0");
+        //configuration.setColors(new int[]{colorValue});
+        mDialog.setConfiguration(configuration);
+
         // Get data
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
@@ -59,13 +72,14 @@ public class SignIn extends AppCompatActivity {
             etPassword.requestFocus();
             etPassword.setError("Field left blank");
         } else {
-
+            mDialog.show();
             // Sign in user
             firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
-                        Toast.makeText(SignIn.this,"Please check your password",Toast.LENGTH_LONG).show();
+                        mDialog.dismiss();
+                        Toast.makeText(SignIn.this,"Authentication failed",Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(SignIn.this,"Welcome "+firebaseAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_LONG).show();
                         Intent homePageIntent = new Intent(SignIn.this,HomePage.class);
@@ -77,19 +91,22 @@ public class SignIn extends AppCompatActivity {
         }
     }
 
-    @Override
+
     public void onBackPressed() {
         super.onBackPressed();
         Intent mainIntent = new Intent(SignIn.this,MainActivity.class);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_left,R.anim.no_anim);
+        //ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_left,R.anim.no_anim);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(mainIntent,option.toBundle());
+        startActivity(mainIntent);
     }
 
     public void forgot_password_btn(View view) {
+        SimpleArcDialog mDialog = new SimpleArcDialog(this);
+        mDialog.setConfiguration(new ArcConfiguration(this));
+        mDialog.setTitle("Please wait...");
+        mDialog.show();
         Intent forgotPasswordIntent = new Intent(SignIn.this,ForgotPassword.class);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignIn.this,R.anim.slide_from_right,R.anim.no_anim);
-        startActivity(forgotPasswordIntent,option.toBundle());
+        startActivity(forgotPasswordIntent);
     }
 
     public void troubleSigningInBtn(View view) {

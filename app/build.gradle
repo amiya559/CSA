@@ -49,4 +49,8 @@ dependencies {
 
     // PDF Viewer
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+    // Arc Loader
+    implementation 'com.leo.simplearcloader:simplearcloader:1.0.+'
+
 }

@@ -24,6 +24,8 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.leo.simplearcloader.ArcConfiguration;
+import com.leo.simplearcloader.SimpleArcDialog;
 
 public class SignUp extends AppCompatActivity {
 
@@ -54,6 +56,11 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void continueRegdBtn(View view) {
+
+        final SimpleArcDialog mDialog = new SimpleArcDialog(this);
+        mDialog.setConfiguration(new ArcConfiguration(this));
+        mDialog.setTitle("Please wait...");
+
         // Close keyboard
         etPassword.onEditorAction(EditorInfo.IME_ACTION_DONE);
 
@@ -76,7 +83,7 @@ public class SignUp extends AppCompatActivity {
         } else {
             etEmail.setError(null);
             etPassword.setError(null);
-
+            mDialog.show();
             // Check duplicate email
             firebaseAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                 @Override
@@ -85,6 +92,7 @@ public class SignUp extends AppCompatActivity {
                     if (check) {
                         etEmail.setText("");
                         etEmail.requestFocus();
+                        mDialog.dismiss();
                         etEmail.setError("Email ID already exists");
                     } else {
 
@@ -113,7 +121,7 @@ public class SignUp extends AppCompatActivity {
         super.onBackPressed();
         Intent mainIntent = new Intent(SignUp.this,MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_right,R.anim.no_anim);
-        startActivity(mainIntent,option.toBundle());
+       // ActivityOptions option = ActivityOptions.makeCustomAnimation(SignUp.this,R.anim.slide_from_right,R.anim.no_anim);
+        startActivity(mainIntent);
     }
 }
